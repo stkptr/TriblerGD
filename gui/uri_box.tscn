@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6y16hfwvh6x7"]
+
+[ext_resource type="Script" path="res://gui/uri_box.gd" id="1_ne0j1"]
+
+[node name="URIBox" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ne0j1")
+
+[node name="URI" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "URI or infohash"
+
+[node name="Remove" type="Button" parent="."]
+layout_mode = 2
+text = "×"
+
+[connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]

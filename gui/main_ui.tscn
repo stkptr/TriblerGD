@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw8bx7k5ic55k"]
+
+[ext_resource type="PackedScene" uid="uid://t6yjbuo0ilmx" path="res://gui/popular.tscn" id="1_81eph"]
+[ext_resource type="Script" path="res://gui/main_ui.gd" id="1_biyak"]
+[ext_resource type="PackedScene" uid="uid://bss4tnpwwkjsr" path="res://gui/local_search.tscn" id="2_y2byl"]
+[ext_resource type="PackedScene" uid="uid://c68jr2bb7iw52" path="res://gui/downloads.tscn" id="4_44xj6"]
+[ext_resource type="PackedScene" uid="uid://cp00s8o1elpxg" path="res://gui/settings.tscn" id="5_we0oq"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_biyak")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Popular" parent="TabContainer" instance=ExtResource("1_81eph")]
+layout_mode = 2
+
+[node name="Search" parent="TabContainer" instance=ExtResource("2_y2byl")]
+visible = false
+layout_mode = 2
+
+[node name="Downloads" parent="TabContainer" instance=ExtResource("4_44xj6")]
+visible = false
+layout_mode = 2
+
+[node name="Settings" parent="TabContainer" instance=ExtResource("5_we0oq")]
+visible = false
+layout_mode = 2
+
+[node name="SignOut" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Sign out"
+
+[connection signal="pressed" from="SignOut" to="." method="_on_sign_out_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dioivg0qylpyr"]
+
+[ext_resource type="Script" path="res://singleton/api_manager.gd" id="1_5wugx"]
+[ext_resource type="PackedScene" uid="uid://j8tngj5lihpl" path="res://script/rest_request.tscn" id="2_fmdo2"]
+
+[node name="ApiManager" type="Node"]
+script = ExtResource("1_5wugx")
+
+[node name="RestRequest" parent="." instance=ExtResource("2_fmdo2")]

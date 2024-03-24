@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://d02qr0fw1kt72"]
+
+[ext_resource type="Script" path="res://gui/sign_in.gd" id="1_oqhqf"]
+
+[node name="SignIn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oqhqf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Connect to Tribler"
+horizontal_alignment = 1
+
+[node name="HostLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "API host and port"
+
+[node name="Host" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "localhost:20100"
+
+[node name="KeyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "API key"
+
+[node name="Key" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "TEST"
+secret = true
+
+[node name="Connect" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Connect"
+
+[node name="Warning" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[connection signal="focus_exited" from="CenterContainer/VBoxContainer/Host" to="." method="_on_host_focus_exited"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/Host" to="." method="_on_host_text_submitted"]
+[connection signal="text_submitted" from="CenterContainer/VBoxContainer/Key" to="." method="_on_key_text_submitted"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Connect" to="." method="_on_connect_pressed"]

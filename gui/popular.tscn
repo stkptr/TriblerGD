@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://t6yjbuo0ilmx"]
+
+[ext_resource type="Script" path="res://gui/popular.gd" id="1_r2f3v"]
+[ext_resource type="PackedScene" uid="uid://cry77k2w36640" path="res://gui/torrent_list.tscn" id="2_7dw1a"]
+
+[node name="Popular" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r2f3v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TorrentList" parent="VBoxContainer" instance=ExtResource("2_7dw1a")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Refresh" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Refresh"
+
+[connection signal="pressed" from="VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]

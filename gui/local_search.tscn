@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bss4tnpwwkjsr"]
+
+[ext_resource type="Script" path="res://gui/local_search.gd" id="1_35fh0"]
+[ext_resource type="PackedScene" uid="uid://cry77k2w36640" path="res://gui/torrent_list.tscn" id="2_80eco"]
+
+[node name="LocalSearch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_35fh0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SearchText" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+
+[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Search" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Search"
+
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NSFW" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "Hide NSFW"
+
+[node name="Descending" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Sort Descending"
+
+[node name="Deleted" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "Hide deleted"
+
+[node name="Category" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TorrentList" parent="VBoxContainer" instance=ExtResource("2_80eco")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/SearchText" to="." method="_on_search_text_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Search" to="." method="_on_search_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

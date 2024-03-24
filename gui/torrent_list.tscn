@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://cry77k2w36640"]
+
+[ext_resource type="Script" path="res://gui/torrent_list.gd" id="1_jvovs"]
+
+[node name="TorrentList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jvovs")
+
+[node name="Split" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="List" type="ItemList" parent="Split"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TorrentDetails" type="VBoxContainer" parent="Split"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="CopyButtons" type="HBoxContainer" parent="Split/TorrentDetails"]
+layout_mode = 2
+
+[node name="Copy" type="Button" parent="Split/TorrentDetails/CopyButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Copy Magnet"
+
+[node name="Slim" type="Button" parent="Split/TorrentDetails/CopyButtons"]
+layout_mode = 2
+text = "Copy Slim"
+
+[node name="Attributes" type="RichTextLabel" parent="Split/TorrentDetails"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+selection_enabled = true
+
+[node name="ActiveButtons" type="HBoxContainer" parent="Split/TorrentDetails"]
+layout_mode = 2
+alignment = 1
+
+[node name="Pause" type="Button" parent="Split/TorrentDetails/ActiveButtons"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Delete" type="Button" parent="Split/TorrentDetails/ActiveButtons"]
+layout_mode = 2
+text = "Delete"
+
+[node name="DownloadButtons" type="HBoxContainer" parent="Split/TorrentDetails"]
+layout_mode = 2
+alignment = 1
+
+[node name="Download" type="Button" parent="Split/TorrentDetails/DownloadButtons"]
+layout_mode = 2
+text = "Download"
+
+[connection signal="item_selected" from="Split/List" to="." method="_on_list_item_selected"]
+[connection signal="pressed" from="Split/TorrentDetails/CopyButtons/Copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="Split/TorrentDetails/CopyButtons/Slim" to="." method="_on_slim_pressed"]
+[connection signal="pressed" from="Split/TorrentDetails/ActiveButtons/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Split/TorrentDetails/ActiveButtons/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Split/TorrentDetails/DownloadButtons/Download" to="." method="_on_download_pressed"]
