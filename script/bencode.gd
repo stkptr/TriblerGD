@@ -12,11 +12,10 @@ static func encode_int(n: int):
 	return ('i%de' % n).to_ascii_buffer()
 
 static func encode_string(s):
-	var out = ('%d:' % len(s)).to_ascii_buffer()
 	if s is String:
-		out.append_array(s.to_utf8_buffer())
-	else:
-		out.append_array(s)
+		s = s.to_utf8_buffer()
+	var out = ('%d:' % s.size()).to_ascii_buffer()
+	out.append_array(s)
 	return out
 
 static func encode_array(a: Array):
